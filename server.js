@@ -7,11 +7,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
-require("./routes/api.js")(app);
-require("./routes/html.js")(app);
+const apiRoutes = require("./routes/api.js")(app);
+const htmlRoutes = require("./routes/html.js")(app);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);
